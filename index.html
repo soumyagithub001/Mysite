@@ -11,8 +11,9 @@
     <header>
         <div class="header-content">
             <h1>10 Labs - Uncovering Insights, Predicting Success</h1>
+			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Icon -->
             <nav>
-                <ul>
+                <ul class="nav-list">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about-me">About us</a></li>
                     <li><a href="#my-projects">Projects</a></li>
@@ -225,6 +226,11 @@
             document.querySelector('.scroll-button.left').onclick = scrollLeft;
             document.querySelector('.scroll-button.right').onclick = scrollRight;
         });
+		
+		function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('active');
+}
     </script>
    
 </html>

@@ -26,7 +26,10 @@ header {
 .header-content h1 {
     font-size: 1.5em;
 }
-
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
 nav ul {
     list-style: none;
     display: flex;
@@ -45,6 +48,12 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+/* Mobile Menu Styles */
+.menu-icon {
+    display: none; /* Hide by default */
+    font-size: 24px; /* Size of the hamburger icon */
+    cursor: pointer; /* Pointer cursor for clicking */
+}
 
 /* Main content styles */
 main {
@@ -57,6 +66,44 @@ section {
     min-height: 100vh;
     color: #fff; /* Text color for better readability on dark backgrounds */
 }
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show the hamburger icon on small screens */
+    }
+    
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Absolute position for dropdown */
+        top: 60px; /* Position below the header */
+        right: 0;
+        background-color: #333; /* Background color for dropdown */
+        width: 100%; /* Full width */
+        text-align: center; /* Center-align text */
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Space between menu items */
+    }
+
+    nav.active ul {
+        display: flex; /* Show menu when active */
+    }
+}
+
+/* Main content styles */
+main {
+    margin-top: 60px; /* Height of the header */
+}
+
+/* Section styles */
+section {
+    padding: 20px;
+    min-height: 100vh;
+    color: #fff; /* Text color for better readability on dark backgrounds */
+}
+
 
 /* Home Section */
 #home {
