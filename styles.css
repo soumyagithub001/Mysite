@@ -63,7 +63,7 @@ main {
 /* Section styles */
 section {
     padding: 20px;
-    min-height: 100vh;
+    min-height: 50vh;
     color: #fff; /* Text color for better readability on dark backgrounds */
 }
 /* Responsive Navigation */
@@ -117,7 +117,7 @@ section {
     justify-content: center; /* Center content vertically */
     text-align: left; /* Align text to the left */
     padding-left: 50px; /* Add padding to move content away from the edge */
-    height: 100vh; /* Full height to center content */
+    height: 80vh; /* Full height to center content */
 }
 #home h2 {
     font-size: 2em; /* Larger font size */
@@ -137,13 +137,39 @@ section {
 
 /* About Me Section */
 #about-me {
-    background-color: #ffffff; /* White background */
-    background-image: linear-gradient(to bottom right, #ffffff, #f1f1f1); /* Shiny effect */
-    padding: 50px 20px;
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    min-height: 100vh; /* Full height */
+	background-image: url('images/aboutus2.jpg');
+	
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* Adjust text color if needed */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Align items to the left */
+    justify-content: center; /* Center content vertically */
+    text-align: left; /* Align text to the left */
+    padding-left: 50px; /* Add padding to move content away from the edge */
+    height: 100vh; /* Full height to center content */
+}
+#about-me h2 {
+    font-size: 2em; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 20px; /* Space below the heading */
+    margin-top: 0; /* Remove extra margin from the top */
+}
+#about-me h3 {
+    font-size: 2em; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 20px; /* Space below the heading */
+    margin-top: 0; /* Remove extra margin from the top */
+	color:#333333
+}
+#about-me p {
+    font-size: 1.25em; /* Larger font size */
+    max-width: 800px; /* Limit width for readability */
+    margin: 0; /* Remove extra margins */
+    margin-bottom: 10px; /* Optional: Add smaller space below the paragraph */
+	text-align: justify;
+	color: #003366
 }
 
 #my-projects {
@@ -195,7 +221,9 @@ section {
 
 
 #ds-nugget {
-    background-color: #b8b8b8;
+	background-color: #f8f8f8; /* Off-white background */
+    padding: 20px 10px; /* Reduce vertical padding */
+    min-height: 50vh; /* Adjust this value to decrease the height */
 }
 
 .about-me-section {
@@ -272,6 +300,7 @@ section {
 /* Project Card Section */
 /* Project Card Section */
 .projects-section {
+	background-image: url('images/cardbckimage.jpg');
     padding: 40px 20px;
     background-color: #2C3E50; /* Contrasting background color */
     color: #ffffff; /* Text color for better readability */
@@ -402,4 +431,109 @@ section {
 .scroll-button.right {
     position: absolute;
     right: 10px;
+}
+
+
+/* Grid Container */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card Wrapper */
+.card {
+    perspective: 1000px; /* Perspective for 3D effect */
+    width: 100%;
+    height: 350px; /* Adjust the height based on your need */
+    border-radius: 10px;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+/* Card Inner (this is the element that will flip) */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Ensures the inner part covers the entire card */
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+/* Flip the card on hover */
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Flip the card */
+}
+
+/* Front and Back Styles */
+.card-front, .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back side when it's not flipped */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Front Card */
+.card-front {
+    background-color: #fff;
+    text-align: center;
+    justify-content: space-between; /* Space elements evenly, with image taking most space */
+}
+
+/* Back Card (initially flipped) */
+.card-back {
+    background-color: #f8f8f8;
+    transform: rotateY(180deg); /* Start flipped */
+    text-align: center;
+}
+
+/* Image Styling */
+.card-front img {
+    width: 100%;  /* Ensure the image takes the full width of the card */
+    height: 90%;  /* Adjust the height to allow stretching */
+    max-height: 100%; /* Ensure the image takes a maximum of 70% of the card height */
+    object-fit: cover;  /* Ensure the image covers the area without stretching */
+    border-radius: 10px 10px 0 0; /* Rounded corners at the top only */
+    margin: 0; /* Remove any margins */
+    display: block;
+}
+
+/* Project Tag Styling (Front) */
+.project-tag2 {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f8f8f8;
+    width: 100%;  /* Ensure the text block takes full width of the card */
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: auto; /* Push the text to the bottom */
+    display: block; /* Ensure it behaves like a block-level element */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Back Card Content */
+.card-back h3 {
+    font-size: 1.0rem;
+    color: #333;
+}
+
+.card-back p {
+	margin:2.5px;
+    font-size: 0.7rem;
+    color: #666;
+    padding: 2px;
+    text-align: justify;
+}
+
+
+#ds-nugget h2 {
+    color: black; /* Change the heading color to black */
 }
