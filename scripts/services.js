@@ -2,52 +2,52 @@
 const services = [
     {
         title: "Intelligent AI & ML Solutions",
-        image: "images/IntelligentAIMLsolutions.PNG",
+        image: "./images/IntelligentAIMLsolutions.PNG",
         description: "Tailored artificial intelligence and machine learning innovations that empower businesses to harness data for smarter decision-making."
     },
     {
         title: "Precision Time Series Forecasting",
-        image: "images/PreciseTimeseriesForecasting.PNG",
+        image: "./images/PreciseTimeseriesForecasting.PNG",
         description: "Cutting-edge forecasting methods that analyze historical data to accurately predict future trends, ensuring strategic agility."
     },
     {
         title: "Transformative Data Analytics",
-        image: "images/AdvanceDataAnalytics.PNG",
+        image: "./images/AdvanceDataAnalytics.PNG",
         description: "Comprehensive analytics services that turn complex data into meaningful insights, driving growth and operational excellence."
     },
     {
         title: "Advanced Data Engineering",
-        image: "images/dataengineering.PNG",
+        image: "./images/dataengineering.PNG",
         description: "Expertise in building robust data architectures that ensure your data is secure, accessible, and primed for analysis."
     },
     {
         title: "SEO Mastery",
-        image: "images/SEOtechnology.PNG",
+        image: "./images/SEOtechnology.PNG",
         description: "Strategic search engine optimization techniques that elevate your online presence, driving organic traffic and enhancing brand visibility."
     },
     {
         title: "Dynamic Social Media Strategies",
-        image: "images/socialmedia.PNG",
+        image: "./images/socialmedia.PNG",
         description: "Engaging social media marketing campaigns designed to resonate with audiences, boost brand loyalty, and increase conversions."
     },
     {
         title: "Innovative Web Solutions",
-        image: "images/Webapplication.PNG",
+        image: "./images/Webapplication.PNG",
         description: "Full-stack web development that creates seamless, interactive, and user-centered digital experiences tailored to your business needs."
     },
     {
         title: "Smart Process Automation",
-        image: "images/smartproc_automation.png",
+        image: "./images/smartproc_automation.png",
         description: "Next-gen automation solutions that streamline workflows, reduce operational costs, and free up resources for strategic initiatives."
     },
     {
         title: "Cloud Innovation Solutions",
-        image: "images/Innovativecloudsolution.png",
+        image: "./images/Innovativecloudsolution.png",
         description: "Scalable cloud solutions that enhance operational flexibility, optimize costs, and ensure secure data management, enabling seamless access and collaboration across your organization."
     },
     {
         title: "AI-Powered Business Consulting",
-        image: "images/AIPoweredBusinessConsulting.png",
+        image: "./images/AIPoweredBusinessConsulting.png",
         description: "Strategic consulting services leveraging AI insights to drive innovation, improve operational efficiency, and enhance competitive advantage, ensuring your business is equipped to thrive in a data-driven world."
     }
 ];
