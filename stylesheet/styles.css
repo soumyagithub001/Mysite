@@ -1,0 +1,962 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.container {
+    display: flex; /* Make the container a flexbox */
+    align-items: center; /* Center items vertically */
+}
+
+.header {
+    position:absolute;
+    top: 0;
+    width: 100vw; /* Full viewport width */
+    left: 0; /* Ensure it starts from the very left edge */
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+    color: black; /* Black text color for header */
+    font-weight: normal;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.0);
+    z-index: 1000;
+    height: 80px; /* Default header height */
+    transition: height background-color 0.5s ease;
+}
+
+
+.header.scrolled {
+    position: fixed; /* Make header sticky when scrolled */
+    background-color: white; /* Change background to solid white */
+    color: black; /* Text color stays black */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Enhance shadow for visibility */
+    height: 60px; /* Smaller height when scrolled */
+    padding: 10px 20px; /* Less padding to make the header more compact */
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    transition: font-size 0.5s ease;
+}
+.nav-list a {
+    font-size: 1rem;
+    transition: font-size 0.5s ease;
+}
+
+.logo {
+    height: 70px; /* Adjust the height as needed */
+    margin-right: 20px; /* Space between logo and navbar */
+    opacity: 0.4; /* Adjust the opacity (0.0 to 1.0, where 0.0 is fully transparent and 1.0 is fully opaque) */
+    transition: opacity 0.8s ease; /* Optional: Add transition for smooth effect */
+}
+
+/* Styles when scrolled */
+.header.scrolled h1 {
+    font-size: 1.8rem; /* Smaller font size for h1 */
+    transition: font-size 0.5s ease;
+}
+
+.header.scrolled .nav-list a {
+    font-size: 0.85rem; /* Smaller font size for menu items */
+    transition: font-size 0.5s ease;
+    color:black;
+}
+.header.scrolled .logo {
+    height: 50px; /* Height when scrolled */
+    opacity: 1; /* Full opacity when scrolled */
+    transition: font-size 0.8s ease;
+}
+
+
+.logo {
+    margin: 0;
+    color: black; /* Set logo text color to black */
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: black; /* Hamburger icon color */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-list li {
+    margin: 0 10px;
+}
+
+.nav-list a {
+    color: rgb(253, 253, 253); /* Set menu link color to black */
+    text-decoration: none;
+}
+/* Media queries for responsiveness */
+/* Media Queries for Responsiveness */
+
+
+@media (max-width: 768px) {
+    .nav-list {
+        display: none; /* Hidden by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Position absolute for dropdown effect */
+        background: rgba(2, 2, 2, 0.9); /* Slightly opaque background for dropdown */
+        top: 50px; /* Position below header */
+        left: 50%; /* Center the dropdown */
+        transform: translateX(-50%); /* Adjust to center the dropdown */
+        max-width: 250px; /* Set a max-width to fit menu items */
+        width: auto; /* Allow width to be defined by contents */
+        z-index: 999; /* Ensure it's above other elements */
+        border-radius: 0px; /* Optional: Add border radius for better appearance */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visibility */
+        font-family: 'Open Sans', sans-serif;
+        font-size:medium;
+    }
+
+    .nav-list.active {
+        display: flex; /* Show when active */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu */
+    }
+
+    /* Adjusting container padding for smaller screens */
+    .container {
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-list {
+        display: none; /* Hidden by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Position absolute for dropdown effect */
+        background: rgba(2, 2, 2, 0.9); /* Slightly opaque background for dropdown */
+        top: 50px; /* Position below header */
+        left: 50%; /* Center the dropdown */
+        transform: translateX(-50%); /* Adjust to center the dropdown */
+        max-width: 250px; /* Set a max-width to fit menu items */
+        width: auto; /* Allow width to be defined by contents */
+        z-index: 999; /* Ensure it's above other elements */
+        border-radius: 0px; /* Optional: Add border radius for better appearance */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visibility */
+        font-family: 'Open Sans', sans-serif;
+        font-size:medium;
+    }
+
+    .nav-list.active {
+        display: flex; /* Show when active */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu */
+    }
+
+    /* Adjusting container padding for smaller screens */
+    .container {
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+}
+/* Styles for screens larger than 1024px */
+@media (min-width: 1025px) {
+    .container {
+        padding: 0 40px; /* Increased padding for larger screens */
+    }
+
+    .nav-list {
+        display: flex; /* Always show the nav-list on larger screens */
+        flex-direction: row; /* Horizontal layout */
+    }
+
+    .nav-list li {
+        margin: 0 15px; /* Increased margin between items */
+    }
+
+    .logo {
+        max-height: 70px; /* Keep logo size consistent */
+    }
+
+    .menu-toggle {
+        display: none; /* Hide hamburger menu on larger screens */
+    }
+}
+
+/*---------------Home Section-----------------------------*/
+#home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1); /* Adjust the opacity for lightness */
+    z-index: 1; /* Place overlay behind content but above image */
+}
+
+#home {
+    background-image: url('/images/AI_Home_1.webp');
+    image-rendering: -webkit-optimize-contrast;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden; /* Prevent content overflow */
+    background-repeat: no-repeat; 
+    background-size: cover; /* Cover instead of contain for better responsiveness */
+}
+
+.content-card {
+    position: absolute; /* Position it absolutely within the parent */
+    left: 5%; /* Align it to the left side of the screen */
+    top: 50%; /* Center vertically, adjust as needed */
+    transform: translateY(-50%); /* Center vertically based on its own height */
+    width: 25%; /* Adjust width as needed */
+    height: 45%;
+    padding: 1%;
+    background-color: rgb(255, 255, 255); /* Background color of the card */
+    border-radius: 0px; /* Rounded corners */
+    z-index: 2; /* Keep it above other elements */
+    overflow: hidden; /* Ensures that only one slide is visible */
+    font-weight: 600;
+}
+
+.content-card .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: transform 1.0s ease-in-out; /* Smooth transition for sliding */
+    transform: translateX(100%); /* Start off-screen to the right */
+}
+
+.content-card .slide.active {
+    transform: translateX(0); /* Bring the active slide into view */
+    opacity: 1; /* Make it visible */
+}
+
+.content-card .slide.prev {
+    transform: translateX(-100%); /* Move previous slide out of view */
+    opacity: 1; /* Ensure it's still visible while transitioning */
+}
+
+.content-card h2 {
+    margin: 20px;
+    font-size: 24px;
+    color: rgb(39, 37, 37);
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 2px; /* Adds spacing between letters */
+    font-weight: 600; /* Lighter font weight */
+    text-align: center; /* Center-aligns the header */
+    line-height: 1.2; /* Optional: Adjust line height for better readability */
+}
+
+.content-card p {
+    font-size: 12px; /* Font size */
+    color: black; /* Text color */
+    margin: 10px; /* Set margin on all sides to 10 pixels */
+    font-family: 'Open Sans', sans-serif; /* Font family */
+    font-weight: 600; /* Lighter font weight for paragraph */
+    text-align: justify; /* Justify text alignment */
+    letter-spacing: 0.5px; /* Adds spacing between letters */
+    line-height: 1.5; /* Adjust line height for better readability */
+}
+
+.dots-container {
+    display: flex;
+    justify-content: flex-end; /* Align dots to the right */
+    position: absolute; /* Positioning absolute within the card */
+    bottom: 10px; /* Distance from the bottom of the card */
+    right: 10px; /* Distance from the right of the card */
+    z-index: 3; /* Ensure it’s above other elements */
+}
+
+.dot {
+    width: 5px; /* Width of the dot */
+    height: 5px; /* Height of the dot */
+    border-radius: 50%; /* Makes the dot circular */
+    background-color: white; /* Default background color */
+    border: 0.5px solid black; /* Black outline */
+    margin: 0 5px; /* Space between dots */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+.dot.active {
+    background-color: gray; /* Color when active */
+}
+
+/* Responsive Styles */
+/* Responsive Styles */
+@media (max-width: 768px) { /* Target screens smaller than 768px */
+    #home {
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+    }
+
+    .content-card {
+        position: relative; /* Change position to relative for better centering */
+        width: 90%; /* Make it wider on smaller screens */
+        min-height: 300px; /* Set a minimum height for the card */
+        height: auto; /* Allow height to adjust automatically */
+        margin-right: 10%;
+        top: auto; /* Reset top positioning */
+        transform: none; /* Remove transform for centering */
+        padding: 2%; /* Add padding for better spacing */
+        background-color: rgba(255, 255, 255, 0.466);
+    }
+
+    .content-card h2 {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        font-weight: 600;
+    }
+
+    .content-card p {
+        font-size: 12px; /* Adjust font size for smaller screens */
+        font-weight: 600;
+    }
+}
+/* Responsive Styles */
+@media (max-width: 480px) { /* Target screens smaller than 768px */
+    #home {
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+    }
+
+    .content-card {
+        position: relative; /* Change position to relative for better centering */
+        width: 90%; /* Make it wider on smaller screens */
+        min-height: 300px; /* Set a minimum height for the card */
+        height: auto; /* Allow height to adjust automatically */
+        margin-right: 10%;
+        top: auto; /* Reset top positioning */
+        transform: none; /* Remove transform for centering */
+        padding: 2%; /* Add padding for better spacing */
+        background-color: rgba(255, 255, 255, 0.466);
+    }
+
+    .content-card h2 {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        font-weight: 600;
+    }
+
+    .content-card p {
+        font-size: 12px; /* Adjust font size for smaller screens */
+        font-weight: 600;
+    }
+}
+
+/*---------------About Us Section-----------------------------*/
+#about {
+    background-image: url('/images/Aboutus.webp');
+    image-rendering: -webkit-optimize-contrast;
+    background-size: contain; /* Keeps the image at its original size */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: right; /* Start with image on the right */
+    height: calc(100vh - 50px); /* Adjust height to account for padding */
+    display: flex;
+    align-items: flex-start; /* Align items at the start for padding effect */
+    justify-content: flex-start; /* Align items to the left */
+    color: white;
+    overflow: hidden; /* Prevent content overflow */
+    margin-top: 5%; /* Margin on top */
+    margin-bottom: 5%; /* Margin on bottom */
+    margin-right: 8%; /* Margin on right */
+    background-color: white; /* Background color to show white space */
+    position: relative; /* Add this to position child elements correctly */
+}
+
+.about-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    padding: 20px; /* Inner spacing */
+    width: 700px; /* Set width as desired */
+    height: 400px; /* Set height as desired */
+    position: absolute; /* Overlay position */
+    left: 3%; /* Distance from the left */
+    top: 100px; /* Distance from the top */
+    z-index: 1; /* Ensure it overlays the background */
+    text-align: center; /* Center-align text in the card */
+}
+
+.about h1 {
+    left: 50px; /* Distance from the left */
+    position: absolute; /* Overlay position */
+    font-size: 30px; /* Font size */
+    color: rgb(39, 37, 37);
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px; /* Adds spacing between letters */
+    font-weight: 600; /* Lighter font weight */
+    text-align: left; /* Aligns the header to the left */
+    line-height: 1.2; /* Adjust line height */
+}
+
+/* Styles for h2, h3, h4, and p elements in the card */
+.about-card h2, .about-card h3, .about-card h4 {
+    margin: 20px;
+    color: rgb(39, 37, 37);
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.5px; /* Adds spacing between letters */
+    font-weight: 400; /* Lighter font weight */
+    line-height: 1.2; /* Adjust line height */
+    text-align: center; /* Center-aligns the header */
+}
+
+
+.about-card p {
+    font-size: 10px; /* Font size for paragraphs */
+    color: black; /* Text color */
+    margin: 10px; /* Margin for paragraphs */
+    font-family: 'Open Sans', sans-serif; /* Font family */
+    font-weight: 600; /* Lighter font weight */
+    text-align: justify; /* Justify text alignment */
+    letter-spacing: 0.5px; /* Adds spacing between letters */
+    line-height: 1.5; /* Adjust line height */
+    font-size: 12px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #about {
+        background-position: center;
+        height: auto;
+        padding: 0px;
+        padding-top:20px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin:0;
+        background-size: cover;
+         
+    }
+
+    .about h1 {
+        font-size: 24px;
+        position: static; /* Remove absolute positioning */
+        text-align: center;
+        margin-bottom: 20px; /* Adds space below header */
+        font-weight: 600;
+    }
+
+    .about-card {
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    margin: 20px auto; /* Centers the card horizontally */
+    padding: 20px;
+    height: auto;
+    top: -30px; /* Moves the card slightly up */
+    }
+
+    .about-card h2 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .about-card h3, .about-card h4 {
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .about-card p {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+}
+@media (max-width: 480px) {
+    #about {
+        background-position: center;
+        height: auto;
+        padding: 0px;
+        padding-top:20px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin:0;
+        background-size: cover;
+         
+    }
+
+    .about h1 {
+        font-size: 24px;
+        position: static; /* Remove absolute positioning */
+        text-align: center;
+        margin-bottom: 20px; /* Adds space below header */
+        font-weight: 600;
+    }
+
+    .about-card {
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    margin: 20px auto; /* Centers the card horizontally */
+    padding: 20px;
+    height: auto;
+    top: -30px; /* Moves the card slightly up */
+    }
+
+    .about-card h2 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .about-card h3, .about-card h4 {
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .about-card p {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+}
+/* Services */
+.services{
+    background-color: rgba(119, 153, 247, 0.205);
+    padding: 0px;
+    width: 100%;
+
+}
+/* Container for the Cards */
+.services-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    overflow:hidden;
+    width: 100%; /* Ensures the container takes up the full width of its parent section */
+    box-sizing: border-box; /* Includes padding and border in the element's total width */
+}
+.services h1 {
+    font-size: 30px;
+    color: rgb(39, 37, 37);
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 20px; /* Adds space below the header */
+
+}
+.service-list-card {
+    width: 30%;
+    margin-left:3%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For overlap positioning */
+    z-index: 1;
+    margin-top: 50px;
+    background-color: rgba(247, 231, 206, 0.9); /* Warm Beige */
+    background-image: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 50%),
+        linear-gradient(225deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0) 50%);
+    background-size: 100% 100%, 100% 100%;
+    background-blend-mode: overlay, overlay; 
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    cursor: pointer; /* Changes cursor to a hand symbol */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px; /* Font size */
+    letter-spacing: 2px;
+
+    display: flex; /* Use flexbox for better alignment */
+    flex-direction: column; /* Stack contents vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: stretch; /* Stretch items to full width */
+  }
+  
+  .custom-icon-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.custom-icon-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+
+.custom-icon-list li::before {
+    content: "✓"; /* Use any icon here */
+    position: absolute;
+    left: 0;
+    color: #007acc; /* Icon color */
+
+}
+  
+  .service-list li {
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .service-list li:hover {
+    background-color: #ccc;
+    
+  }
+  
+  .service-card {
+    width: 75%;
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0px; /* Adjusts overlap position */
+    left: -10%; /* Slightly offset to overlap */
+    z-index: 0;
+    height: 500px; /* 30% taller than service-list-card */
+    background-color: rgba(223, 247, 225, 0.8); /* Warm Beige */
+     /* Flexbox center alignment */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center; /* Centers text within the div */
+     font-family: 'Open Sans', sans-serif;
+     letter-spacing: 2px;
+      /* Font size */
+      display: flex; /* Use flexbox for better alignment */
+    flex-direction: row; /* Stack image and text */
+    align-items: center; /* Center items */
+    overflow:hidden;
+    
+  }
+  
+  .description-title {
+    font-family: 'Open Sans', sans-serif; /* Font for the title */
+    font-size: 16px; /* Title font size */
+    margin: 5px 0; /* Margin for spacing */
+}
+
+.description-slide {
+    font-family: 'Open Sans', sans-serif; /* Use Open Sans font */
+    font-size: 12px; /* Set font size for the description */
+    margin: 5px 0; /* Margin for spacing */
+}
+  .image-container {
+    flex: 0 0 70%; /* Set flex-basis to 75% */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+    overflow:hidden;
+  
+}
+
+.service-image {
+    width: 100%; /* Image takes full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100%; /* Set a max height to prevent overflow */
+    object-fit: contain; /* Maintain aspect ratio and cover the space */
+    
+}
+
+.description-container {
+    flex: 0 0 30%; /* Set flex-basis to 25% */
+    display: flex; /* Flexbox for vertical alignment */
+    align-items: center; /* Center the description vertically */
+    justify-content: center; /* Center the description horizontally */
+    text-align: center; /* Center text */
+    padding: 10px; /* Padding for the description */
+    flex-direction: column; 
+}
+
+.dot-container {
+    display: flex;
+    justify-content: center; /* Center the dots */
+    margin-top: 20px; /* Space between description and dots */
+}
+
+.dot {
+    width: 10px; /* Size of each dot */
+    height: 10px; /* Size of each dot */
+    border-radius: 50%; /* Make them circular */
+    background-color: lightgray; /* Default color */
+    margin: 0 5px; /* Space between dots */
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .description-container{
+        margin-right:2px;
+    }
+    .image-container,.service-image  {
+        display:none;
+    }
+    .service-list-card{
+        margin-top: 50px;
+    }
+    .services h1{
+        text-align: center;
+    }
+}
+/* Responsive Styles */
+@media (max-width: 480px) {
+    .description-container{
+        margin-right:2px;
+    }
+    .image-container,.service-image  {
+        display:none;
+    }
+    .service-list-card{
+        margin-top: 9px;
+    }
+    .services h1{
+        text-align: center;
+    }
+}
+
+/*---------------AI Chronicles-----------------------------*/
+/* AI Chronicles Section */
+#aichronicles {
+    position: relative;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    margin: 5% 8% 5% 0;
+    padding-top: 20px; /* Adjust as needed */
+    overflow: hidden;
+}
+
+/* Background Image */
+#aichronicles::before {
+    content: '';
+    position: absolute;
+    top: 50px; /* Space below h1 */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    background: url('/images/library.png') no-repeat center;
+    background-size: contain;
+    width: 100%;
+    height: calc(100vh - 100px); /* Adjust height as needed */
+    z-index: 0;
+    opacity: 0.7; /* Adjust opacity if you want the image to be subtle */
+    padding-top: 60px; /* Adjust this to move content downward */
+}
+
+/* H1 Heading Styling */
+.aichronicles h1 {
+    font-size: 30px;
+    color: #272525;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-align: left;
+    width: 100%;
+    padding-left: 5%;
+    margin-top: 0;
+    margin-bottom: 20px;
+    z-index: 10; /* Place heading above background */
+    position: relative;
+}
+
+.card-container {
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-between; /* Distribute space evenly between cards */
+    align-items: flex-start; /* Align cards at the top */
+    width: 90%; /* Full width of the container */
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Optional: padding around the container */
+    margin: 0 auto; /* Center the container */
+    z-index: 10;
+}
+
+.insight-card,
+.predict-card,
+.business-growth-card {
+    width: calc(33.33% - 13.33px); /* Width of each card, accounting for gap */
+    height: 400px; /* Fixed height for each card */
+    background-color: rgba(223, 247, 225, 0.8); /* Adjusted background color */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    padding: 20px; /* Padding for card content */
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 20px; /* Optional: space above the cards */
+}
+
+/* Specific styling for headings */
+.insight-card h2,
+.predict-card h2,
+.business-growth-card h2 {
+    font-size: 14px; /* Adjust font size as needed */
+    color: #333;
+    font-weight: 400;
+    margin-top: 0; /* Removes default top margin */
+    margin-bottom: 10px; /* Space below heading */
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+.document-links {
+    list-style: none; /* Remove default bullets */
+    padding: 0; /* Remove padding */
+}
+
+.document-links li {
+    position: relative; /* Set relative positioning for pseudo-element */
+    padding-left: 25px; /* Add space for custom bullet */
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+}
+
+.document-links li::before {
+    content: "📄"; /* Use a file emoji or you can replace it with an image URL */
+    position: absolute;
+    left: 0; /* Align to the left */
+    font-size: 10px; /* Adjust size of the bullet */
+    line-height: 1; /* Ensure the line height is consistent */
+}
+.document-links a {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 300; /* Decrease font weight */
+    letter-spacing: 2px; /* Increase letter spacing */
+    font-size: 10px;
+}
+
+.document-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+/* Responsive Styles */
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Remove background image for small screens */
+    #aichronicles::before {
+        background: none !important; /* Ensure background image is removed */
+        margin: 0 !important; /* Reset margins */
+    }
+
+    .card-container {
+        display: flex; /* Ensure flexbox is enabled */
+        flex-direction: column; 
+        margin: 0; /* Reset margins */
+        margin-top: 50px; /* Space below h1 */
+        align-items: center; /* Center align cards in column layout */
+        justify-content: center; /* Center cards horizontally */
+        padding-left: 50px; /* Optional padding */
+        width: 100%; /* Ensure it takes full width */
+    }
+
+    .insight-card,
+    .predict-card,
+    .business-growth-card {
+        width: 75%; /* Change to 90% for better spacing on small screens */
+        height: 100px; /* Keep height as needed */
+        margin: 10px 0; /* Add margin between cards */
+        overflow-y: auto; /* Enable vertical scrollbar */
+        border: 1px solid #ddd; /* Optional: border to define card area */
+    }
+    
+    .aichronicles h1 {
+        text-align: center; /* Center heading text */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Remove background image for small screens */
+    #aichronicles::before {
+        background: none !important; /* Ensure background image is removed */
+        margin: 0 !important; /* Reset margins */
+    }
+
+    .card-container {
+        display: flex; /* Ensure flexbox is enabled */
+        flex-direction: column; 
+        margin: 0; /* Reset margins */
+        margin-top: 50px; /* Space below h1 */
+        align-items: center; /* Center align cards in column layout */
+        justify-content: center; /* Center cards horizontally */
+        padding-left: 50px; /* Optional padding */
+        width: 100%; /* Ensure it takes full width */
+    }
+
+    .insight-card,
+    .predict-card,
+    .business-growth-card {
+        width: 75%; /* Change to 90% for better spacing on small screens */
+        height: 100px; /* Keep height as needed */
+        margin: 10px 0; /* Add margin between cards */
+        overflow-y: auto; /* Enable vertical scrollbar */
+        border: 1px solid #ddd; /* Optional: border to define card area */
+        margin-right:5%;
+    }
+    
+    .aichronicles h1 {
+        text-align: center; /* Center heading text */
+    }
+}
+
+
+/************Contact Us***************************/
+.contact-us {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+    padding: 20px; /* Space around the content */
+    text-align: center; /* Center align text */
+    margin-top: 40px; /* Space above the section */
+}
+
+.contact-us h2 {
+    font-family: 'Open Sans', sans-serif; /* Font for the heading */
+    font-weight: 700; /* Bold font for the heading */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.contact-us p {
+    font-family: 'Open Sans', sans-serif; /* Font for the paragraph */
+    margin-bottom: 10px; /* Space below the paragraph */
+}
+
+.contact-us a {
+    color: #fff; /* White color for the email link */
+    text-decoration: none; /* Remove underline */
+    font-weight: 300; /* Lighter font weight */
+}
+
+.contact-us a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.whatsapp-contact {
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center the content */
+    align-items: center; /* Align items vertically */
+    margin-top: 10px; /* Space above WhatsApp contact */
+}
+
+.whatsapp-contact i {
+    font-size: 20px; /* Size of the WhatsApp icon */
+    margin-right: 8px; /* Space between icon and text */
+    color: #25D366; /* WhatsApp green color */
+}
+
+.whatsapp-contact a {
+    color: #fff; /* White color for the WhatsApp link */
+    text-decoration: none; /* Remove underline */
+    font-weight: 300; /* Lighter font weight */
+}
+
